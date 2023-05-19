@@ -1,0 +1,31 @@
+In Boomi, you can compare two document cache values using scripting. Here's an example of how you can compare two document cache values in Boomi:
+
+First, make sure you have set up the document cache in your Boomi process and have stored the values you want to compare in the cache.
+
+Add a "Script" shape to your Boomi process after retrieving the document cache values.
+
+Double-click on the "Script" shape to open the scripting editor.
+
+In the scripting editor, select the scripting language you prefer (e.g., Groovy or JavaScript). For this example, let's use Groovy.
+
+Write the script to retrieve the document cache values and compare them. Here's an example:
+
+groovy code
+
+def value1 = documentCache.get("cacheKey1")
+def value2 = documentCache.get("cacheKey2")
+
+if (value1 == value2) {
+    // Values are equal
+    // Perform your desired actions or transformations here
+} else {
+    // Values are not equal
+    // Perform other actions or transformations here
+}
+In this example, cacheKey1 and cacheKey2 are the keys used to store the values in the document cache. You can replace them with your actual cache keys.
+
+Save the script and close the scripting editor.
+
+Continue building your Boomi process with the desired actions or transformations based on the comparison result.
+
+By comparing the retrieved values from the document cache, you can take different actions or perform specific transformations in your Boomi process based on the comparison result.
