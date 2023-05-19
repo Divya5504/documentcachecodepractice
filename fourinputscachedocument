@@ -1,0 +1,35 @@
+To compare four document cache values in Boomi using code, you can utilize a Groovy script within a Data Process shape. Here's an example of how you can accomplish this:
+
+Add a "Data Process" shape to your Boomi process canvas.
+
+Double-click on the "Data Process" shape to open its configuration window.
+
+Within the "Data Process" shape, click on the "Add" button under the "Data Process Steps" section to add a new step.
+
+In the step configuration window, select "Groovy Script" as the action type.
+
+Enter a meaningful name for the step and click on the "Edit" button next to the script field to open the Groovy script editor.
+
+Write a Groovy script that compares the four document cache values. Here's an example script that compares the values and sets a result flag based on the comparison:
+
+groovy
+Copy code
+def cacheValue1 = dataContext.get("CacheValue1")
+def cacheValue2 = dataContext.get("CacheValue2")
+def cacheValue3 = dataContext.get("CacheValue3")
+def cacheValue4 = dataContext.get("CacheValue4")
+
+def result = false
+
+if (cacheValue1 == cacheValue2 && cacheValue2 == cacheValue3 && cacheValue3 == cacheValue4) {
+    result = true
+}
+
+dataContext.store("ComparisonResult", result.toString())
+In the script above, CacheValue1, CacheValue2, CacheValue3, and CacheValue4 are the names of the document cache values you want to compare. Modify them according to your actual cache value names.
+
+After writing the Groovy script, click on the "Save" button to save the script.
+
+Save and deploy your Boomi process.
+
+With the above steps, you have created a Data Process shape with a Groovy script that compares the four document cache values. The script sets a result flag based on the comparison, and you can access this flag in subsequent shapes of your process by retrieving the "ComparisonResult" document cache value.
