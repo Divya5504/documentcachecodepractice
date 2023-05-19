@@ -1,0 +1,43 @@
+To compare two document cache values where one cache stores 4 inputs values and the other cache stores 3 inputs values lookups, and the desired output is if all 3 values are equal, you can use the following approach in Boomi:
+
+Add a Data Process shape to your Boomi process.
+
+Within the Data Process shape, select a scripting language (e.g., Groovy, JavaScript).
+
+In the scripting language, you can access the document cache using the executionContext object.
+
+groovy
+Copy code
+def docCache1 = executionContext.getDynamicDocumentProperty('cacheName1') // Replace 'cacheName1' with the actual name of the first document cache
+def docCache2 = executionContext.getDynamicDocumentProperty('cacheName2') // Replace 'cacheName2' with the actual name of the second document cache
+
+// Retrieve the values from the document cache for the first lookup
+def lookup1Value1 = docCache1['lookup1Key1'] // Replace 'lookup1Key1' with the first lookup key for the first cache
+def lookup1Value2 = docCache1['lookup1Key2'] // Replace 'lookup1Key2' with the second lookup key for the first cache
+def lookup1Value3 = docCache1['lookup1Key3'] // Replace 'lookup1Key3' with the third lookup key for the first cache
+def lookup1Value4 = docCache1['lookup1Key4'] // Replace 'lookup1Key4' with the fourth lookup key for the first cache
+
+// Retrieve the values from the document cache for the second lookup
+def lookup2Value1 = docCache2['lookup2Key1'] // Replace 'lookup2Key1' with the first lookup key for the second cache
+def lookup2Value2 = docCache2['lookup2Key2'] // Replace 'lookup2Key2' with the second lookup key for the second cache
+def lookup2Value3 = docCache2['lookup2Key3'] // Replace 'lookup2Key3' with the third lookup key for the second cache
+
+// Compare the values from the document cache
+if (lookup1Value1 == lookup2Value1 && lookup1Value2 == lookup2Value2 && lookup1Value3 == lookup2Value3) {
+    // All values are equal
+    // Add your desired logic here
+} else {
+    // Values are not equal
+    // Add your desired logic here
+}
+Make sure to replace 'cacheName1', 'cacheName2', 'lookup1Key1', 'lookup1Key2', 'lookup1Key3', 'lookup1Key4', 'lookup2Key1', 'lookup2Key2', and 'lookup2Key3' with the actual names of your caches and lookup keys.
+
+Customize the logic inside the if and else blocks according to your requirements. You can perform any necessary operations or transformations based on the comparison result.
+
+Save and deploy your Boomi process to test the comparison of the document cache values in the lookups.
+
+Remember to adapt the code to the specific scripting language you choose and the structure of your Boomi process.
+
+
+
+
