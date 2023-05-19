@@ -1,0 +1,35 @@
+To compare two document cache values in multiple lookups in Boomi, you can use scripting within a Data Process shape. Here's an example of how you can achieve this:
+
+Add a Data Process shape to your Boomi process.
+
+Within the Data Process shape, select a scripting language (e.g., Groovy, JavaScript).
+
+In the scripting language, you can access the document cache using the executionContext object.
+
+groovy
+Copy code
+def docCache = executionContext.getDynamicDocumentProperty('cacheName') // Replace 'cacheName' with the actual name of your document cache
+
+// Retrieve the values from the document cache using the lookup keys
+def lookupValue1 = docCache['lookupKey1'] // Replace 'lookupKey1' with the first lookup key
+def lookupValue2 = docCache['lookupKey2'] // Replace 'lookupKey2' with the second lookup key
+
+// Compare the values from the document cache
+if (lookupValue1 == lookupValue2) {
+    // Values are equal
+    // Add your desired logic here
+} else {
+    // Values are not equal
+    // Add your desired logic here
+}
+Make sure to replace 'cacheName', 'lookupKey1', and 'lookupKey2' with the actual names of your cache and lookup keys.
+
+Customize the logic inside the if and else blocks according to your requirements. You can perform any necessary operations or transformations based on the comparison result.
+
+Save and deploy your Boomi process to test the comparison of the document cache values in the lookups.
+
+Remember to adapt the code to the specific scripting language you choose and the structure of your Boomi process.
+
+
+
+
